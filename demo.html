@@ -1,0 +1,43 @@
+
+<html>
+
+<body>
+    <script type="text/javascript" src="gapless.js"></script>
+    <p>
+        This page uses MSE to concatenate two encoded fragmented MP4 (AAC) files into a gapless audio stream. The transition at around 01:24 should be seamless.
+    </p>
+
+    <hr>
+
+    <p>
+        <label>
+            Segments mode, trim leading and trailing samples of breath_1.mp4, and trim leading and trailing samples of breath_2.mp4.
+        </label>
+        <br/>
+        <audio id="audio_0" controls />
+    </p>
+    <div id="audio_0_log"></div>
+    <script type="text/javascript">
+        load('audio_0', 'audio_0_log', true, 'segments');
+    </script>
+
+    <hr>
+
+    <p>
+        <label>
+            Segments mode, trim leading and trailing samples of breath_1.mp4, and trim leading and trailing samples of breath_2.mp4.
+        </label>
+        <br/>
+        <audio id="audio_1" controls />
+    </p>
+    <div id="audio_1_log"></div>
+    <script type="text/javascript">
+        load('audio_1', 'audio_1_log', false, 'segments');
+    </script>
+
+    <hr>
+
+</body>
+
+</html>
+
