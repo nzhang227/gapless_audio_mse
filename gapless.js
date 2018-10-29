@@ -6,13 +6,13 @@ function load(id, log_id, has_elst, sourceBufferMode = 'sequence') {
     let sourceBuffer;
 
     const audioUrlsWithElst = [
-        '/resources/tone_1.mp4',
-        '/resources/tone_2.mp4'
+        './resources/tone_1.mp4',
+        './resources/tone_2.mp4'
     ];
 
     const audioUrlsNoElst = [
-        '/resources/tone_1_no_elst.mp4',
-        '/resources/tone_2_no_elst.mp4'
+        './resources/tone_1_no_elst.mp4',
+        './resources/tone_2_no_elst.mp4'
     ];    
 
     const audioUrls = has_elst ? audioUrlsWithElst : audioUrlsNoElst;
