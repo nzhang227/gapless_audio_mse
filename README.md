@@ -3,7 +3,7 @@ Gapless Audio MSE uses MSE to concatenate two encoded fragmented MP4 (AAC) files
 into a gapless audio stream. If player and MSE work correctly, the transition in
 the middle should be seamless and users shouldn't hear a pop.
 
-To try it out, please visit [Gapless Audio MSE Demo](https://nzhang227.github.io/gapless_audio_mse/demo.html)
+To try it out, please visit [Gapless Audio MSE Demo](https://nzhang227.github.io/gapless_audio_mse/demo.html).
 
 # Details about the test files
 The gapless test files are under resource folder.
@@ -41,12 +41,11 @@ Let's do some math:
 * total_samples_before_trim = total_frames * samples_per_frame = 112640
 * total_samples_after_trim = segment_duration = 110250
 * leading_samples_to_trim = 1600
-* trailing_samples_to_trim = total_samples_before_trim 
-	- total_samples_after_trim - leading_samples_to_trim = 790
+* trailing_samples_to_trim = total_samples_before_trim - total_samples_after_trim - leading_samples_to_trim = 790
 
 ## About tone_(1|2)_no_elst.mp4
 It seems like most media stacks don't handle ELST correctly. In order to workaround this, we have another test case to remove all the special features that browser can mess up on trimming. 
 
 In order to do that, I manually changed the test files using a hex editor:
-* Mark EDTS as SKIP box.
+* Mark EDTS as SKIP box. Simply search in the binary for EDTS and change it to SKIP
 * Set last packet duraion in TRUN back to 1024
