@@ -1,43 +1,41 @@
-
 <html>
 
 <body>
     <script type="text/javascript" src="gapless.js"></script>
     <p>
-        This page uses MSE to concatenate two encoded fragmented MP4 (AAC) files into a gapless audio stream. The transition at around 01:24 should be seamless.
+        This page is a demo using MSE to concatenate two encoded fragmented MP4 (AAC) files into a gapless audio stream. The transition at around 00:02 should be seamless.
     </p>
-
-    <hr>
-
     <p>
-        <label>
-            Segments mode, trim leading and trailing samples of breath_1.mp4, and trim leading and trailing samples of breath_2.mp4.
-        </label>
-        <br/>
+        Please see <a href="https://github.com/nzhang227/gapless_audio_mse">Gapless Audio MSE</a> for more details.
+    </p>
+    <hr>
+    <p>Player_0 uses test files with ELST box in-band</p>
+    <ul>
+        <li>This player concatenates tone_1.mp4 and tone_2.mp4</li>
+        <li>Assume</li>
+        <li>Doesn't sound gapless in Chrome or Firefox</li>
+    </ul>
+    <p>
+        <br />
         <audio id="audio_0" controls />
     </p>
     <div id="audio_0_log"></div>
     <script type="text/javascript">
-        load('audio_0', 'audio_0_log', true, 'segments');
+    load('audio_0', 'audio_0_log', true);
     </script>
-
     <hr>
-
     <p>
         <label>
-            Segments mode, trim leading and trailing samples of breath_1.mp4, and trim leading and trailing samples of breath_2.mp4.
+            This player concatenates tone_1_no_elst.mp4 and tone_2_no_elst.mp4.
         </label>
-        <br/>
+        <br />
         <audio id="audio_1" controls />
     </p>
     <div id="audio_1_log"></div>
     <script type="text/javascript">
-        load('audio_1', 'audio_1_log', false, 'segments');
+    load('audio_1', 'audio_1_log', false);
     </script>
-
     <hr>
-
 </body>
 
 </html>
-
