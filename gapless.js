@@ -3,13 +3,17 @@ function load(audio_id, log_id, has_elst) {
     const timescale = 44100;
 
     // Please See README for more details about the test files.
-    // audioUrlsWithElst contains audio files with ELST box and last frame 
+
+    // audioUrlsWithElst contains audio files with ELST box and final packet 
     // duration less than 1024.
     const audioUrlsWithElst = [
         './resources/tone_1.mp4',
         './resources/tone_2.mp4'
     ];
-    // audioUrlsWithElst contains audio files without ELST box and last frame 
+    // Unfortunately most media stacks don't handle ELST correctly. In order to
+    // workaround this we have another test case to remove all the special 
+    // features that browser can mess up on trimming. 
+    // audioUrlsWithElst contains audio files without ELST box and final packet 
     // duration equal to 1024.
     const audioUrlsNoElst = [
         './resources/tone_1_no_elst.mp4',
@@ -23,11 +27,11 @@ function load(audio_id, log_id, has_elst) {
     // For test files in audioUrlsWithElst, according to 
     // https://www.w3.org/TR/mse-byte-stream-format-isobmff/#iso-init-segments,
     // Let's assume that browser does these things correctly:
-    // - Parse Edit Box (EDTS) and Edit List Box (ELST)
+    // - Parse ELST
     // - Set timestamp offset according to media_time in ELST
     // - Trim exactly leading samples as media_time suggests
     // Then it's client's obligation to trim extra trailing samples 
-    // according to the last frame duration describe in TRUN. 
+    // according to the final packet duration described in TRUN. 
     const gaplessInfosWithElst = [
         new GaplessInfo(0, 790, 112640 - (1600 + 790), timescale),
         new GaplessInfo(0, 790, 112640 - (1600 + 790), timescale),
@@ -53,8 +57,8 @@ function load(audio_id, log_id, has_elst) {
         let sourceBuffer = mediaSource.addSourceBuffer(codecString);
         // As for gapless playback, some browsers (like Chrome) do things 
         // differently between sequence mode and segments mode. Using sequence
-        // mode could make things more complex and unexpectable. So Let's use 
-        // segments mode.
+        // mode could make things more complex and unpredictable. So Let's use 
+        // segments mode, and leave sequence mode alone for now.
         sourceBuffer.mode = "segments";
 
         function onAudioLoaded(data, index) {
@@ -90,8 +94,8 @@ function load(audio_id, log_id, has_elst) {
             // window.
             sourceBuffer.timestampOffset = offset;
 
-            log(log_element, '****** buffer mode = ' + sourceBufferMode +
-                ', trim index = ' + index + ' *******');
+            log(log_element, '****** buffer mode = ' + sourceBuffer.mode +
+                ', audio index = ' + index + ' *******');
             log(log_element, 'appendWindowStart = ' +
                 sourceBuffer.appendWindowStart);
             log(log_element, 'appendWindowEnd = ' +

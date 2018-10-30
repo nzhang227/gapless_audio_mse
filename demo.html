@@ -3,34 +3,39 @@
 <body>
     <script type="text/javascript" src="gapless.js"></script>
     <p>
-        This page is a demo using MSE to concatenate two encoded fragmented MP4 (AAC) files into a gapless audio stream. The transition at around 00:02 should be seamless.
+        This page is a demo using MSE to concatenate two encoded fragmented MP4 (AAC) files into a gapless audio stream. If player and MSE work correctly, the transition in the middle should be seamless and users shouldn't hear a pop.
     </p>
     <p>
         Please see <a href="https://github.com/nzhang227/gapless_audio_mse">Gapless Audio MSE</a> for more details.
     </p>
     <hr>
-    <p>Player_0 uses test files with ELST box in-band</p>
+    <p>Player_0 uses test files with ELST box. Details as below: </p>
     <ul>
-        <li>This player concatenates tone_1.mp4 and tone_2.mp4</li>
-        <li>Assume</li>
-        <li>Doesn't sound gapless in Chrome or Firefox</li>
+        <li>Concatenates tone_1.mp4 and tone_2.mp4</li>
+        <li>Assume browser parse ELST correctely, and shift timestamp and trim leading samples implicitly</li>
+        <li>Player trims extra trailing samples explicitly</li>
+        <li><b>Test result: doesn't sound gapless on Chrome or Firefox</b></li>
     </ul>
     <p>
-        <br />
         <audio id="audio_0" controls />
     </p>
+    <br>
     <div id="audio_0_log"></div>
     <script type="text/javascript">
     load('audio_0', 'audio_0_log', true);
     </script>
     <hr>
+    <p>Player_1 uses test files without ELST box. Details as below: </p>
+    <ul>
+        <li>Concatenates tone_1_no_elst.mp4 and tone_2_no_elst.mp4</li>
+        <li>Browser does nothing about gapless</li>
+        <li>Player shifts timestampOffset and trims extra leading and trailing samples explicitly</li>
+        <li><b>Test result: sounds gapless on Chrome, but not on Firefox</b></li>
+    </ul>
     <p>
-        <label>
-            This player concatenates tone_1_no_elst.mp4 and tone_2_no_elst.mp4.
-        </label>
-        <br />
         <audio id="audio_1" controls />
     </p>
+    <br>
     <div id="audio_1_log"></div>
     <script type="text/javascript">
     load('audio_1', 'audio_1_log', false);
