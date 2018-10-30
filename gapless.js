@@ -57,8 +57,8 @@ function load(audio_id, log_id, has_elst) {
         let sourceBuffer = mediaSource.addSourceBuffer(codecString);
         // As for gapless playback, some browsers (like Chrome) do things 
         // differently between sequence mode and segments mode. Using sequence
-        // mode could make things more complex and unpredictable. So Let's use 
-        // segments mode, and leave sequence mode alone for now.
+        // mode could make things more complicated and unpredictable. So Let's 
+        // use segments mode, and leave sequence mode alone for now.
         sourceBuffer.mode = "segments";
 
         function onAudioLoaded(data, index) {

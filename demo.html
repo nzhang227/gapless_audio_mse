@@ -10,10 +10,10 @@
         Please see <a href="https://github.com/nzhang227/gapless_audio_mse">Gapless Audio MSE</a> for more details.
     </p>
     <hr>
-    <p>Player_0 uses test files with ELST box. Details as below: </p>
+    <p>GaplessAudioPlayer</p>
     <ul>
         <li>Concatenates tone_1.mp4 and tone_2.mp4</li>
-        <li>Assume browser parse ELST correctely, and shift timestamp and trim leading samples implicitly</li>
+        <li>Assume browser parse ELST correctely, and shift timestamp and trim leading samples accordingly</li>
         <li>Player trims extra trailing samples explicitly</li>
         <li><b>Test result: doesn't sound gapless on Chrome or Firefox</b></li>
     </ul>
@@ -24,7 +24,7 @@
     load('audio_0', 'audio_0_log', true);
     </script>
     <hr>
-    <p>Player_1 uses test files without ELST box. Details as below: </p>
+    <p>GaplessAudioPlayerWorkaround</p>
     <ul>
         <li>Concatenates tone_1_no_elst.mp4 and tone_2_no_elst.mp4</li>
         <li>Browser does nothing about gapless</li>
