@@ -22,7 +22,12 @@ Based on these assumptions, I've got GaplessAudioPlayer at [Gapless Audio MSE De
 ## Test Results
 Unforturnately, it doesn't work out as expected. Seems like most media stacks don't handle ELST correctly.
 
-TODO
+| Browser | Version                                 | OS                                           | Gapless Demo Works |
+|:--------|:----------------------------------------|:---------------------------------------------|:-------------------|
+| Chrome  | 69.0.3497.100 (Official Build) (64-bit) | Debian GNU/Linux 4.17.0-3rodete2-amd64       | No                 |
+| Firefox | 60.2.0esr (64-bit)                      | Debian GNU/Linux 4.17.0-3rodete2-amd64       | No                 |
+| IE11    | 11.726.16299.0                          | Windows 10 Version 1709 (OS Build 16299.726) | No                 |
+| Edge    | 41.16299.726.0                          | Windows 10 Version 1709 (OS Build 16299.726) | No                 |
 
 # Workaround
 For now most MSE implementations don't handle ELST correctly and the behavior is quite unpredictable. To workaround those issues, player needs to remove all the special features that MSE implementations can mess up on when trimming. A reasonable workaround can be:
