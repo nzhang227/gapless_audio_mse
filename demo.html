@@ -11,12 +11,6 @@
     </p>
     <hr>
     <p>GaplessAudioPlayer</p>
-    <ul>
-        <li>Concatenates tone_1.mp4 and tone_2.mp4</li>
-        <li>Assume browser parse ELST correctely, and shift timestamp and trim leading samples accordingly</li>
-        <li>Player trims extra trailing samples explicitly</li>
-        <li><b>Test result: doesn't sound gapless on Chrome or Firefox</b></li>
-    </ul>
     <p><audio id="audio_0" controls></audio></p>
     <br>
     <div id="audio_0_log"></div>
@@ -25,12 +19,6 @@
     </script>
     <hr>
     <p>GaplessAudioPlayerWorkaround</p>
-    <ul>
-        <li>Concatenates tone_1_no_elst.mp4 and tone_2_no_elst.mp4</li>
-        <li>Browser does nothing about gapless</li>
-        <li>Player shifts timestampOffset and trims extra leading and trailing samples explicitly</li>
-        <li><b>Test result: sounds gapless on Chrome, but not on Firefox</b></li>
-    </ul>
     <p><audio id="audio_1" controls></audio></p>
     <br>
     <div id="audio_1_log"></div>

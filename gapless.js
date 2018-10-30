@@ -38,7 +38,7 @@ function load(audio_id, log_id, has_elst) {
     ]
     // For test files in audioUrlsNoElst, browsers are supposed to do
     // nothing about timestamp shifting and sample trimming. In order to get
-    // gapless playback, client should does those things explicitly.
+    // gapless playback, client should do those things explicitly.
     const gaplessInfosNoElst = [
         new GaplessInfo(1600, 790, 112640 - (1600 + 790), timescale),
         new GaplessInfo(1600, 790, 112640 - (1600 + 790), timescale),
