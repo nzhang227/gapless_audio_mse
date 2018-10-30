@@ -131,10 +131,8 @@ function log(element, message) {
     console.log(message);
 }
 
-class GaplessInfo {
-    constructor(delay, padding, duration, timescale) {
-        this.delay = delay / timescale;
-        this.padding = padding / timescale;
-        this.duration = duration / timescale;
-    }
+function GaplessInfo(delay, padding, duration, timescale) {
+    this.delay = delay / timescale;
+    this.padding = padding / timescale;
+    this.duration = duration / timescale;
 }
