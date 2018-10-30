@@ -40,7 +40,12 @@ Based on the workaround, I've got GaplessAudioPlayerWorkaround at [Gapless Audio
 ## Test Results
 This workaround works perfectly gapless on Chrome, but not on other browsers. 
 
-TODO
+| Browser | Version                                 | OS                                           | Gapless Demo Works |
+|:--------|:----------------------------------------|:---------------------------------------------|:-------------------|
+| Chrome  | 69.0.3497.100 (Official Build) (64-bit) | Debian GNU/Linux 4.17.0-3rodete2-amd64       | `YES`              |
+| Firefox | 60.2.0esr (64-bit)                      | Debian GNU/Linux 4.17.0-3rodete2-amd64       | No                 |
+| IE11    | 11.726.16299.0                          | Windows 10 Version 1709 (OS Build 16299.726) | No                 |
+| Edge    | 41.16299.726.0                          | Windows 10 Version 1709 (OS Build 16299.726) | No                 |
 
 ## Root Cause
 Seems like other browsers got different issues from Chrome. I believe the major reason is that they don't support sample-accurate-audio-splicing.
