@@ -23,7 +23,7 @@ So it seems like for Gapless Playback, player should
 Based on these assumptions, I've got GaplessAudioPlayer at [Gapless Audio MSE Demo](https://nzhang227.github.io/gapless_audio_mse/demo.html). 
 
 ### Test Results
-Unforturnately, the demo doesn't work out as expected. Seems like most media stacks don't handle ELST correctly.
+Unfortunately, the demo doesn't work out as expected. Seems like most media stacks don't handle ELST correctly.
 
 | Browser | Version                                 | OS                                           | Demo Works |
 |:--------|:----------------------------------------|:---------------------------------------------|:-----------|
