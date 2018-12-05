@@ -1,6 +1,4 @@
 function load(audio_id, log_id, has_elst) {
-    document.body.style.backgroundColor = "pink";
-
     const codecString = 'audio/mp4; codecs="mp4a.40.2"';
     const timescale = 44100;
 
@@ -110,9 +108,6 @@ function load(audio_id, log_id, has_elst) {
         }
 
         get(audioUrls[0], function(data) { onAudioLoaded(data, 0); });
-        if (audio_id === 'audio_1') {
-            audio.play();
-        }
 
     }, { once: true });
 }
